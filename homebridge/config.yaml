@@ -12,7 +12,9 @@ ports:
   8581/tcp: 8581
 ports_description:
   8581/tcp: Homebridge UI
-webui: http://[HOST]:[PORT:8581]
+ingress: true
+ingress_port: 8581
+panel_icon: mdi:home-automation
 host_network: true
 init: false
 map:
