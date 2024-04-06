@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0] - 2024-04-06
+- Update Homebridge to 2024-01-08
+- Update bashio to 0.16.2
+- Add github action to sync with the latest Homebridge release
+- Add button to easily add the repository to Home Assistant
+- Enable "add to sidebar" for the addon
+
 ## [0.1.8] - 2024-01-06
 
 - Update Homebridge to 2023-12-30 and switch to the official container image.
