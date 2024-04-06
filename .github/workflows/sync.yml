@@ -1,0 +1,29 @@
+---
+# yamllint disable rule:line-length rule:truthy
+name: Sync with Upstream
+
+on:
+  release:
+    types: [created]
+    # Repository that triggers the event
+    repositories:
+      - homebridge/docker-homebridge
+
+jobs:
+  check-upstream:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      # updates the Homebridge version in the add-on build.yaml args
+      - name: Create commit
+        run: |
+          sed -i "s/RELEASE_TAG: .*/RELEASE_TAG: ${{ github.event.release.tag_name }}/" homebridge/build.yaml
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: "Update Homebridge to ${{ github.event.release.tag_name }}"
+          title: "Update Homebridge to ${{ github.event.release.tag_name }}"
+          body: "This PR updates Homebridge to the latest version."
+          branch: "updates/homebridge-${{ github.event.release.tag_name }}"

@@ -1,0 +1,15 @@
+---
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
+# the tag will be automatically updated by the CI/CD pipeline
+# yamllint disable rule:line-length rule:truthy
+build_from:
+  aarch64: "homebridge/homebridge"
+  amd64: "homebridge/homebridge"
+  armv7: "homebridge/homebridge"
+labels:
+  org.opencontainers.image.title: "Homebridge add-on for Home Assistant"
+  org.opencontainers.image.description: "Homebridge allows you to integrate with smart home devices that do not support Home Assistant."
+  org.opencontainers.image.source: "https://github.com/dvdblg/hassio-addons"
+  org.opencontainers.image.licenses: "Apache License 2.0"
+args:
+  RELEASE_TAG: "2024-01-08"

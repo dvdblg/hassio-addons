@@ -1,5 +1,5 @@
 {
-  "name": "Davide's Home Assistant Add-Ons",
-  "url": "https://github.com/davide125/hassio-addons",
-  "maintainer": "Davide Cavalca <davide@cavalca.name>"
+  "name": "Personal Home Assistant add-ons",
+  "url": "https://github.com/dvdblg/hassio-addons",
+  "maintainer": "dvdblg <dvdblg@users.noreply.github.com>"
 }
