@@ -1,18 +1,20 @@
-FROM homebridge/homebridge:2023-12-30
+ARG BUILD_FROM
+ARG RELEASE_TAG
+FROM ${BUILD_FROM}:${RELEASE_TAG}
 
 # Relocate homebridge working directory so it can be persisted
 RUN find /etc/s6-overlay/ -type f | xargs sed -i -E 's:([ "])/homebridge:\1/config:g'
 
 # add bashio
-ADD https://github.com/hassio-addons/bashio/archive/v0.16.0.tar.gz /tmp/bashio.tar.gz
+ADD https://github.com/hassio-addons/bashio/archive/v0.16.2.tar.gz /tmp/bashio.tar.gz
 RUN apt-get update \
     && apt-get install --no-install-recommends -y curl jq \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir /tmp/bashio \
     && tar zxvf \
-        /tmp/bashio.tar.gz \
-        --strip 1 -C /tmp/bashio \
+    /tmp/bashio.tar.gz \
+    --strip 1 -C /tmp/bashio \
     \
     && mv /tmp/bashio/lib /usr/lib/bashio \
     && ln -s /usr/lib/bashio/bashio /usr/bin/bashio
